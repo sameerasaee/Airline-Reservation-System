@@ -1,0 +1,10 @@
+Airline Reservation System
+
+USE CASES:
+
+1)Passenger Registration and Flight Booking:
+ The system prompts the passenger to provide personal information  including name,contact detailes,and passport information
+ Passenger select the desired flight,specifying departure and arrival location ,travel date and class of service
+ The system displays available flights ,schedules and pricing options for passenger's selection.
+ The person provides payment details to secure booking.
+ The system surely processes the payment,issue an e-ticket, and sends a booking confirmation to the passenger. 
