@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://main" xmlns:intf="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="bookingDetails">
+    <complexType>
+     <sequence>
+      <element name="passengerID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bookingDetailsResponse">
+    <complexType/>
+   </element>
+   <element name="verifyPassengerIdentity">
+    <complexType>
+     <sequence>
+      <element name="passportNumber" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="verifyPassengerIdentityResponse">
+    <complexType>
+     <sequence>
+      <element name="verifyPassengerIdentityReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchFlightDetails">
+    <complexType>
+     <sequence>
+      <element name="flightID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchFlightDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="fetchFlightDetailsReturn" type="impl:FlightDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FlightDetails">
+    <sequence>
+     <element name="departureLocation" nillable="true" type="xsd:string"/>
+     <element name="arrivalLocation" nillable="true" type="xsd:string"/>
+     <element name="departureDate" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="verifyPassengerIdentityResponse">
+
+      <wsdl:part element="impl:verifyPassengerIdentityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bookingDetailsRequest">
+
+      <wsdl:part element="impl:bookingDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bookingDetailsResponse">
+
+      <wsdl:part element="impl:bookingDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchFlightDetailsResponse">
+
+      <wsdl:part element="impl:fetchFlightDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifyPassengerIdentityRequest">
+
+      <wsdl:part element="impl:verifyPassengerIdentity" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchFlightDetailsRequest">
+
+      <wsdl:part element="impl:fetchFlightDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BoardingPass">
+
+      <wsdl:operation name="bookingDetails">
+
+         <wsdl:input message="impl:bookingDetailsRequest" name="bookingDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:bookingDetailsResponse" name="bookingDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifyPassengerIdentity">
+
+         <wsdl:input message="impl:verifyPassengerIdentityRequest" name="verifyPassengerIdentityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:verifyPassengerIdentityResponse" name="verifyPassengerIdentityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchFlightDetails">
+
+         <wsdl:input message="impl:fetchFlightDetailsRequest" name="fetchFlightDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:fetchFlightDetailsResponse" name="fetchFlightDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BoardingPassSoapBinding" type="impl:BoardingPass">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="bookingDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bookingDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bookingDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifyPassengerIdentity">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verifyPassengerIdentityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verifyPassengerIdentityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchFlightDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fetchFlightDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fetchFlightDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BoardingPassService">
+
+      <wsdl:port binding="impl:BoardingPassSoapBinding" name="BoardingPass">
+
+         <wsdlsoap:address location="http://localhost:8080/airlinereservationsystems/services/BoardingPass"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
