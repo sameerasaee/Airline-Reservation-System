@@ -4,48 +4,48 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="verifyPassengerIdentity">
+   <element name="refund">
     <complexType>
      <sequence>
-      <element name="passportNumber" type="xsd:string"/>
+      <element name="PassengerID" type="xsd:int"/>
      </sequence>
     </complexType>
    </element>
-   <element name="verifyPassengerIdentityResponse">
+   <element name="refundResponse">
     <complexType>
      <sequence>
-      <element name="verifyPassengerIdentityReturn" type="xsd:int"/>
+      <element name="refundReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="verifyPassengerIdentityResponse">
+   <wsdl:message name="refundResponse">
 
-      <wsdl:part element="impl:verifyPassengerIdentityResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="verifyPassengerIdentityRequest">
-
-      <wsdl:part element="impl:verifyPassengerIdentity" name="parameters">
+      <wsdl:part element="impl:refundResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:portType name="BoardingPass">
+   <wsdl:message name="refundRequest">
 
-      <wsdl:operation name="verifyPassengerIdentity">
+      <wsdl:part element="impl:refund" name="parameters">
 
-         <wsdl:input message="impl:verifyPassengerIdentityRequest" name="verifyPassengerIdentityRequest">
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RefundTicket">
+
+      <wsdl:operation name="refund">
+
+         <wsdl:input message="impl:refundRequest" name="refundRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:verifyPassengerIdentityResponse" name="verifyPassengerIdentityResponse">
+         <wsdl:output message="impl:refundResponse" name="refundResponse">
 
        </wsdl:output>
 
@@ -53,21 +53,21 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:portType>
 
-   <wsdl:binding name="BoardingPassSoapBinding" type="impl:BoardingPass">
+   <wsdl:binding name="RefundTicketSoapBinding" type="impl:RefundTicket">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="verifyPassengerIdentity">
+      <wsdl:operation name="refund">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="verifyPassengerIdentityRequest">
+         <wsdl:input name="refundRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="verifyPassengerIdentityResponse">
+         <wsdl:output name="refundResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -77,11 +77,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:binding>
 
-   <wsdl:service name="BoardingPassService">
+   <wsdl:service name="RefundTicketService">
 
-      <wsdl:port binding="impl:BoardingPassSoapBinding" name="BoardingPass">
+      <wsdl:port binding="impl:RefundTicketSoapBinding" name="RefundTicket">
 
-         <wsdlsoap:address location="http://localhost:8080/airlinereservationsystems/services/BoardingPass"/>
+         <wsdlsoap:address location="http://localhost:8080/airlinereservationsystems/services/RefundTicket"/>
 
       </wsdl:port>
 

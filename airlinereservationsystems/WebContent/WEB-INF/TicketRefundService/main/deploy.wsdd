@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 
-  <!-- Services from BoardingPassService WSDL service -->
+  <!-- Services from TicketRefundService WSDL service -->
 
-  <service name="BoardingPass" provider="java:RPC" style="wrapped" use="literal">
+  <service name="TicketRefund" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://main"/>
-      <parameter name="wsdlServiceElement" value="BoardingPassService"/>
+      <parameter name="wsdlServiceElement" value="TicketRefundService"/>
       <parameter name="schemaQualified" value="http://main"/>
-      <parameter name="wsdlServicePort" value="BoardingPass"/>
-      <parameter name="className" value="main.BoardingPass"/>
-      <parameter name="wsdlPortType" value="BoardingPass"/>
+      <parameter name="wsdlServicePort" value="TicketRefund"/>
+      <parameter name="className" value="main.TicketRefund"/>
+      <parameter name="wsdlPortType" value="TicketRefund"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://main" xmlns:retNS="http://main" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="verifyPassengerIdentity" qname="operNS:verifyPassengerIdentity" returnQName="retNS:verifyPassengerIdentityReturn" returnType="rtns:int" soapAction="">
-        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:passportNumber" type="tns:string"/>
+      <operation xmlns:operNS="http://main" name="refund" qname="operNS:refund" soapAction="">
+        <parameter xmlns:pns="http://main" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:args" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="verifyPassengerIdentity"/>
+      <parameter name="allowedMethods" value="refund"/>
 
   </service>
 </deployment>

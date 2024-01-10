@@ -20,24 +20,10 @@
       <parameter name="className" value="main.BoardingPassSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="BoardingPass"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="bookingDetails" qname="operNS:bookingDetails" xmlns:operNS="http://main" soapAction="" >
-        <parameter qname="pns:passengerID" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
       <operation name="verifyPassengerIdentity" qname="operNS:verifyPassengerIdentity" xmlns:operNS="http://main" returnQName="retNS:verifyPassengerIdentityReturn" xmlns:retNS="http://main" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:passportNumber" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="fetchFlightDetails" qname="operNS:fetchFlightDetails" xmlns:operNS="http://main" returnQName="retNS:fetchFlightDetailsReturn" xmlns:retNS="http://main" returnType="rtns:FlightDetails" xmlns:rtns="http://main" soapAction="" >
-        <parameter qname="pns:flightID" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <parameter name="allowedMethods" value="verifyPassengerIdentity bookingDetails fetchFlightDetails"/>
+      <parameter name="allowedMethods" value="verifyPassengerIdentity"/>
 
-      <typeMapping
-        xmlns:ns="http://main"
-        qname="ns:FlightDetails"
-        type="java:main.FlightDetails"
-        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
-        encodingStyle=""
-      />
   </service>
 </deployment>

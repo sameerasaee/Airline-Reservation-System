@@ -12,14 +12,23 @@
 
   <!-- Services from FlightDetailsService WSDL service -->
 
-  <service name="FlightDetails" provider="java:RPC" style="document" use="encoded">
+  <service name="FlightDetails" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://main"/>
       <parameter name="wsdlServiceElement" value="FlightDetailsService"/>
+      <parameter name="schemaQualified" value="http://main"/>
       <parameter name="wsdlServicePort" value="FlightDetails"/>
       <parameter name="className" value="main.FlightDetailsSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="FlightDetails"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <parameter name="allowedMethods" value="*"/>
+      <operation name="toString" qname="operNS:toString" xmlns:operNS="http://main" returnQName="retNS:toStringReturn" xmlns:retNS="http://main" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getArrivalLocation" qname="operNS:getArrivalLocation" xmlns:operNS="http://main" returnQName="retNS:getArrivalLocationReturn" xmlns:retNS="http://main" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getDepartureLocation" qname="operNS:getDepartureLocation" xmlns:operNS="http://main" returnQName="retNS:getDepartureLocationReturn" xmlns:retNS="http://main" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getDepartureDate" qname="operNS:getDepartureDate" xmlns:operNS="http://main" returnQName="retNS:getDepartureDateReturn" xmlns:retNS="http://main" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getDepartureDate toString getDepartureLocation getArrivalLocation"/>
 
   </service>
 </deployment>

@@ -1,3 +1,4 @@
+
 package main;
 import java.sql.*;
 
@@ -6,7 +7,7 @@ public class fetchbookingdetails {
     public String booking(int passengerID) {
         String DB_URL = "jdbc:mysql://localhost:3306/airlinereservationsystem";
         String DB_USER = "root";
-        String DB_PASSWORD = ""; // Add your password here
+        String DB_PASSWORD = ""; 
 
         StringBuilder details = new StringBuilder();
 
@@ -31,16 +32,6 @@ public class fetchbookingdetails {
 
                 FlightDetails flightDetails = fetchFlightDetails(flightID);
                 
-//                details.append("Flight Details: Departure from ")
-//                       .append(flightDetails.departureLocation)
-//                       .append(" to ")
-//                       .append(flightDetails.arrivalLocation)
-//                       .append(" on ")
-//                       .append(flightDetails.departureDate)
-//                       .append("\n");
-//
-//                details.append("Booking Date: ").append(bookingDate).append("\n");
-//                details.append("Status Displayed: ").append(status).append("\n");
             } else {
                 details.append("No booking details found for PassengerID: ").append(passengerID).append("\n");
             }
