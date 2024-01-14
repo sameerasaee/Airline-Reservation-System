@@ -84,6 +84,20 @@
   <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
   <ns1:parameter name="wsdlServiceElement" value="PaymentDetailsService"/>
  </ns1:service>
+ <ns1:service name="RefundTicket" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="processRefund" qname="ns5:processRefund" returnQName="ns5:processRefundReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:passengerId" type="xsd:int"/>
+   <ns1:parameter qname="ns5:choice" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="processRefund"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="RefundTicket"/>
+  <ns1:parameter name="className" value="PassengerRegistration.RefundTicket"/>
+  <ns1:parameter name="wsdlServicePort" value="RefundTicket"/>
+  <ns1:parameter name="schemaQualified" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServiceElement" value="RefundTicketService"/>
+ </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>
    <ns1:handler type="URLMapper"/>
