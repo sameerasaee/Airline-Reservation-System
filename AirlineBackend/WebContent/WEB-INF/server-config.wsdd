@@ -28,16 +28,40 @@
   <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
+ <ns1:service name="DisplayFlight" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="viewFlights" qname="ns1:viewFlights" returnQName="ns1:viewFlightsReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/"/>
+  <ns1:parameter name="allowedMethods" value="viewFlights"/>
+  <ns1:parameter name="wsdlPortType" value="DisplayFlight"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServicePort" value="DisplayFlight"/>
+  <ns1:parameter name="className" value="PassengerRegistration.DisplayFlight"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServiceElement" value="DisplayFlightService"/>
+ </ns1:service>
+ <ns1:service name="FlightDetails" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="bookFlight" qname="ns2:bookFlight" returnQName="ns2:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:flightId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="bookFlight"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="FlightDetails"/>
+  <ns1:parameter name="className" value="PassengerRegistration.FlightDetails"/>
+  <ns1:parameter name="wsdlServicePort" value="FlightDetails"/>
+  <ns1:parameter name="schemaQualified" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServiceElement" value="FlightDetailsService"/>
+ </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="RegisterPassenger" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="addDetails" qname="ns1:addDetails" returnQName="ns1:addDetailsReturn" returnType="xsd:int" soapAction="" xmlns:ns1="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
-   <ns2:parameter qname="ns1:name" type="xsd:string"/>
-   <ns2:parameter qname="ns1:contactNumber" type="xsd:int"/>
-   <ns2:parameter qname="ns1:passportNumber" type="xsd:string"/>
-  </ns2:operation>
+  <ns1:operation name="addDetails" qname="ns3:addDetails" returnQName="ns3:addDetailsReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:name" type="xsd:string"/>
+   <ns1:parameter qname="ns3:contactNumber" type="xsd:int"/>
+   <ns1:parameter qname="ns3:passportNumber" type="xsd:string"/>
+  </ns1:operation>
   <ns1:parameter name="allowedMethods" value="addDetails"/>
   <ns1:parameter name="wsdlPortType" value="RegisterPassenger"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
@@ -48,8 +72,8 @@
   <ns1:parameter name="wsdlServiceElement" value="RegisterPassengerService"/>
  </ns1:service>
  <ns1:service name="PaymentDetails" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="paymentConfim" qname="ns2:paymentConfim" returnQName="ns2:paymentConfimReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns2:ptype" type="xsd:string"/>
+  <ns1:operation name="paymentConfim" qname="ns4:paymentConfim" returnQName="ns4:paymentConfimReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:ptype" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="paymentConfim"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
