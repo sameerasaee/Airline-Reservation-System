@@ -4,20 +4,6 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="booking">
-    <complexType>
-     <sequence>
-      <element name="passengerID" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="bookingResponse">
-    <complexType>
-     <sequence>
-      <element name="bookingReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="fetchFlightDetails">
     <complexType>
      <sequence>
@@ -39,6 +25,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      <element name="departureDate" nillable="true" type="xsd:string"/>
     </sequence>
    </complexType>
+   <element name="booking">
+    <complexType>
+     <sequence>
+      <element name="passengerID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bookingResponse">
+    <complexType>
+     <sequence>
+      <element name="bookingReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
 
@@ -58,14 +58,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="bookingRequest">
-
-      <wsdl:part element="impl:booking" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="fetchFlightDetailsRequest">
 
       <wsdl:part element="impl:fetchFlightDetails" name="parameters">
@@ -74,19 +66,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="bookingRequest">
+
+      <wsdl:part element="impl:booking" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="fetchbookingdetails">
-
-      <wsdl:operation name="booking">
-
-         <wsdl:input message="impl:bookingRequest" name="bookingRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:bookingResponse" name="bookingResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
 
       <wsdl:operation name="fetchFlightDetails">
 
@@ -100,29 +88,23 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="booking">
+
+         <wsdl:input message="impl:bookingRequest" name="bookingRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:bookingResponse" name="bookingResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="fetchbookingdetailsSoapBinding" type="impl:fetchbookingdetails">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-      <wsdl:operation name="booking">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="bookingRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="bookingResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
 
       <wsdl:operation name="fetchFlightDetails">
 
@@ -135,6 +117,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="fetchFlightDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="booking">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bookingRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bookingResponse">
 
             <wsdlsoap:body use="literal"/>
 
