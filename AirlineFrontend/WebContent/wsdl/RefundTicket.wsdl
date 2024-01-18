@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://PassengerRegistration" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://PassengerRegistration" xmlns:intf="http://PassengerRegistration" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://PassengerRegistration" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="processRefund">
+    <complexType>
+     <sequence>
+      <element name="passengerId" type="xsd:int"/>
+      <element name="choice" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="processRefundResponse">
+    <complexType>
+     <sequence>
+      <element name="processRefundReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="processRefundRequest">
+
+      <wsdl:part element="impl:processRefund" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="processRefundResponse">
+
+      <wsdl:part element="impl:processRefundResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RefundTicket">
+
+      <wsdl:operation name="processRefund">
+
+         <wsdl:input message="impl:processRefundRequest" name="processRefundRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:processRefundResponse" name="processRefundResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="RefundTicketSoapBinding" type="impl:RefundTicket">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="processRefund">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="processRefundRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="processRefundResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="RefundTicketService">
+
+      <wsdl:port binding="impl:RefundTicketSoapBinding" name="RefundTicket">
+
+         <wsdlsoap:address location="http://localhost:8080/AirlineBackend/services/RefundTicket"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
