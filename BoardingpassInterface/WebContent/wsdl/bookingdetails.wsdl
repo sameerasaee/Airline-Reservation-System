@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://main" xmlns:intf="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="bookingDetails">
+    <complexType>
+     <sequence>
+      <element name="passengerID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bookingDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="bookingDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="bookingDetailsRequest">
+
+      <wsdl:part element="impl:bookingDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bookingDetailsResponse">
+
+      <wsdl:part element="impl:bookingDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="bookingdetails">
+
+      <wsdl:operation name="bookingDetails">
+
+         <wsdl:input message="impl:bookingDetailsRequest" name="bookingDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:bookingDetailsResponse" name="bookingDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="bookingdetailsSoapBinding" type="impl:bookingdetails">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="bookingDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bookingDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bookingDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="bookingdetailsService">
+
+      <wsdl:port binding="impl:bookingdetailsSoapBinding" name="bookingdetails">
+
+         <wsdlsoap:address location="http://localhost:8080/airlinereservationsystems/services/bookingdetails"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
