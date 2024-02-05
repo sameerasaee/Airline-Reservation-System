@@ -4,50 +4,49 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://PassengerRegistration" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="addDetails">
+   <element name="processRefund">
     <complexType>
      <sequence>
-      <element name="name" type="xsd:string"/>
-      <element name="contactNumber" type="xsd:int"/>
-      <element name="passportNumber" type="xsd:string"/>
+      <element name="passengerId" type="xsd:int"/>
+      <element name="choice" type="xsd:int"/>
      </sequence>
     </complexType>
    </element>
-   <element name="addDetailsResponse">
+   <element name="processRefundResponse">
     <complexType>
      <sequence>
-      <element name="addDetailsReturn" type="xsd:int"/>
+      <element name="processRefundReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="addDetailsResponse">
+   <wsdl:message name="processRefundRequest">
 
-      <wsdl:part element="impl:addDetailsResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="addDetailsRequest">
-
-      <wsdl:part element="impl:addDetails" name="parameters">
+      <wsdl:part element="impl:processRefund" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:portType name="RegisterPassenger">
+   <wsdl:message name="processRefundResponse">
 
-      <wsdl:operation name="addDetails">
+      <wsdl:part element="impl:processRefundResponse" name="parameters">
 
-         <wsdl:input message="impl:addDetailsRequest" name="addDetailsRequest">
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RefundTicket">
+
+      <wsdl:operation name="processRefund">
+
+         <wsdl:input message="impl:processRefundRequest" name="processRefundRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:addDetailsResponse" name="addDetailsResponse">
+         <wsdl:output message="impl:processRefundResponse" name="processRefundResponse">
 
        </wsdl:output>
 
@@ -55,21 +54,21 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:portType>
 
-   <wsdl:binding name="RegisterPassengerSoapBinding" type="impl:RegisterPassenger">
+   <wsdl:binding name="RefundTicketSoapBinding" type="impl:RefundTicket">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="addDetails">
+      <wsdl:operation name="processRefund">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="addDetailsRequest">
+         <wsdl:input name="processRefundRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="addDetailsResponse">
+         <wsdl:output name="processRefundResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -79,11 +78,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:binding>
 
-   <wsdl:service name="RegisterPassengerService">
+   <wsdl:service name="RefundTicketService">
 
-      <wsdl:port binding="impl:RegisterPassengerSoapBinding" name="RegisterPassenger">
+      <wsdl:port binding="impl:RefundTicketSoapBinding" name="RefundTicket">
 
-         <wsdlsoap:address location="http://localhost:8080/AirlineBackend/services/RegisterPassenger"/>
+         <wsdlsoap:address location="http://localhost:8080/Airline-Webservices/services/RefundTicket"/>
 
       </wsdl:port>
 

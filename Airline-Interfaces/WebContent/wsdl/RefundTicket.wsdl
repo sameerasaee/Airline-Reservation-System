@@ -4,48 +4,49 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://PassengerRegistration" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="paymentConfim">
+   <element name="processRefund">
     <complexType>
      <sequence>
-      <element name="ptype" type="xsd:string"/>
+      <element name="passengerId" type="xsd:int"/>
+      <element name="choice" type="xsd:int"/>
      </sequence>
     </complexType>
    </element>
-   <element name="paymentConfimResponse">
+   <element name="processRefundResponse">
     <complexType>
      <sequence>
-      <element name="paymentConfimReturn" type="xsd:string"/>
+      <element name="processRefundReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="paymentConfimRequest">
+   <wsdl:message name="processRefundRequest">
 
-      <wsdl:part element="impl:paymentConfim" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="paymentConfimResponse">
-
-      <wsdl:part element="impl:paymentConfimResponse" name="parameters">
+      <wsdl:part element="impl:processRefund" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:portType name="PaymentDetails">
+   <wsdl:message name="processRefundResponse">
 
-      <wsdl:operation name="paymentConfim">
+      <wsdl:part element="impl:processRefundResponse" name="parameters">
 
-         <wsdl:input message="impl:paymentConfimRequest" name="paymentConfimRequest">
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="RefundTicket">
+
+      <wsdl:operation name="processRefund">
+
+         <wsdl:input message="impl:processRefundRequest" name="processRefundRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:paymentConfimResponse" name="paymentConfimResponse">
+         <wsdl:output message="impl:processRefundResponse" name="processRefundResponse">
 
        </wsdl:output>
 
@@ -53,21 +54,21 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:portType>
 
-   <wsdl:binding name="PaymentDetailsSoapBinding" type="impl:PaymentDetails">
+   <wsdl:binding name="RefundTicketSoapBinding" type="impl:RefundTicket">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="paymentConfim">
+      <wsdl:operation name="processRefund">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="paymentConfimRequest">
+         <wsdl:input name="processRefundRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="paymentConfimResponse">
+         <wsdl:output name="processRefundResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -77,11 +78,11 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:binding>
 
-   <wsdl:service name="PaymentDetailsService">
+   <wsdl:service name="RefundTicketService">
 
-      <wsdl:port binding="impl:PaymentDetailsSoapBinding" name="PaymentDetails">
+      <wsdl:port binding="impl:RefundTicketSoapBinding" name="RefundTicket">
 
-         <wsdlsoap:address location="http://localhost:8080/AirlineBackend/services/PaymentDetails"/>
+         <wsdlsoap:address location="http://localhost:8080/Airline-Webservices/services/RefundTicket"/>
 
       </wsdl:port>
 
