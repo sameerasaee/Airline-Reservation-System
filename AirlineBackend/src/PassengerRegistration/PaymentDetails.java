@@ -30,7 +30,7 @@ public class PaymentDetails {
 		}catch (Exception e) {
 		    e.printStackTrace();
 		}
-		return "Booking Placed! Thank you for choosing our airline."+ "Booking Information:"+"BookingID: " + bookingID + " PaymentDetails: " + ptype + " Status: Pending";
+		return "Booking Placed! Thank you for choosing our airline."+ "Booking Information:"+"BookingID: " + bookingID + " PaymentDetails: " + ptype + " Status: Confirmed";
 	}
 }
 

@@ -9,7 +9,7 @@
 <undeployment
     xmlns="http://xml.apache.org/axis/wsdd/">
 
-  <!-- Services from FlightDetailsService WSDL service -->
+  <!-- Services from BoardingPassService WSDL service -->
 
-  <service name="FlightDetails"/>
+  <service name="BoardingPass"/>
 </undeployment>
