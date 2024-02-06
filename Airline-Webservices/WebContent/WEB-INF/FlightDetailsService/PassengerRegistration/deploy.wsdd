@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FlightDetailsService WSDL service -->
+
+  <service name="FlightDetails" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+      <parameter name="wsdlServiceElement" value="FlightDetailsService"/>
+      <parameter name="schemaQualified" value="http://PassengerRegistration"/>
+      <parameter name="wsdlServicePort" value="FlightDetails"/>
+      <parameter name="className" value="PassengerRegistration.FlightDetails"/>
+      <parameter name="wsdlPortType" value="FlightDetails"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://PassengerRegistration" xmlns:retNS="http://PassengerRegistration" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="bookFlight" qname="operNS:bookFlight" returnQName="retNS:bookFlightReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://PassengerRegistration" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:flightId" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="bookFlight"/>
+
+  </service>
+</deployment>

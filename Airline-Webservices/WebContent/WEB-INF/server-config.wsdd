@@ -26,14 +26,16 @@
   <ns2:operation name="verifyPassengerIdentity" qname="ns1:verifyPassengerIdentity" returnQName="ns1:verifyPassengerIdentityReturn" returnType="xsd:int" soapAction="" xmlns:ns1="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
    <ns2:parameter qname="ns1:passportNumber" type="xsd:string"/>
   </ns2:operation>
-  <ns1:parameter name="allowedMethods" value="verifyPassengerIdentity"/>
-  <ns1:parameter name="wsdlPortType" value="BoardingPass"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
   <ns1:parameter name="wsdlServicePort" value="BoardingPass"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="className" value="main.BoardingPass"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="verifyPassengerIdentity"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="BoardingPassService"/>
+  <ns1:parameter name="wsdlPortType" value="BoardingPass"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
  </ns1:service>
  <ns1:service name="fetchbookingdetails" provider="java:RPC" style="wrapped" use="literal">
   <ns1:operation name="booking" qname="ns2:booking" returnQName="ns2:bookingReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -71,28 +73,54 @@
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="FlightdService"/>
  </ns1:service>
- <ns1:service name="bookingdetails" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="bookingDetails" qname="ns6:bookingDetails" returnQName="ns6:bookingDetailsReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:passengerID" type="xsd:int"/>
-  </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="bookingDetails"/>
-  <ns1:parameter name="wsdlPortType" value="bookingdetails"/>
+ <ns1:service name="DisplayFlight" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="viewFlights" qname="ns6:viewFlights" returnQName="ns6:viewFlightsReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="viewFlights"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlPortType" value="DisplayFlight"/>
+  <ns1:parameter name="className" value="PassengerRegistration.DisplayFlight"/>
+  <ns1:parameter name="wsdlServicePort" value="DisplayFlight"/>
+  <ns1:parameter name="schemaQualified" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServiceElement" value="DisplayFlightService"/>
+ </ns1:service>
+ <ns1:service name="bookingdetails" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="bookingDetails" qname="ns7:bookingDetails" returnQName="ns7:bookingDetailsReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://main" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:passengerID" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="sendMultiRefs" value="false"/>
   <ns1:parameter name="wsdlServicePort" value="bookingdetails"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="className" value="main.bookingdetails"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="bookingDetails"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="bookingdetailsService"/>
+  <ns1:parameter name="wsdlPortType" value="bookingdetails"/>
+  <ns1:parameter name="sendXsiTypes" value="false"/>
+ </ns1:service>
+ <ns1:service name="FlightDetails" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="bookFlight" qname="ns8:bookFlight" returnQName="ns8:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:flightId" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="bookFlight"/>
+  <ns1:parameter name="wsdlPortType" value="FlightDetails"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServicePort" value="FlightDetails"/>
+  <ns1:parameter name="className" value="PassengerRegistration.FlightDetails"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServiceElement" value="FlightDetailsService"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="RegisterPassenger" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="addDetails" qname="ns7:addDetails" returnQName="ns7:addDetailsReturn" returnType="xsd:int" soapAction="" xmlns:ns7="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns7:name" type="xsd:string"/>
-   <ns1:parameter qname="ns7:contactNumber" type="xsd:int"/>
-   <ns1:parameter qname="ns7:passportNumber" type="xsd:string"/>
+  <ns1:operation name="addDetails" qname="ns9:addDetails" returnQName="ns9:addDetailsReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:name" type="xsd:string"/>
+   <ns1:parameter qname="ns9:contactNumber" type="xsd:int"/>
+   <ns1:parameter qname="ns9:passportNumber" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="addDetails"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
@@ -103,10 +131,23 @@
   <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
   <ns1:parameter name="wsdlServiceElement" value="RegisterPassengerService"/>
  </ns1:service>
+ <ns1:service name="PaymentDetails" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="paymentConfim" qname="ns10:paymentConfim" returnQName="ns10:paymentConfimReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:ptype" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="paymentConfim"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="PaymentDetails"/>
+  <ns1:parameter name="className" value="PassengerRegistration.PaymentDetails"/>
+  <ns1:parameter name="wsdlServicePort" value="PaymentDetails"/>
+  <ns1:parameter name="schemaQualified" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://PassengerRegistration"/>
+  <ns1:parameter name="wsdlServiceElement" value="PaymentDetailsService"/>
+ </ns1:service>
  <ns1:service name="RefundTicket" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="processRefund" qname="ns8:processRefund" returnQName="ns8:processRefundReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns8:passengerId" type="xsd:int"/>
-   <ns1:parameter qname="ns8:choice" type="xsd:int"/>
+  <ns1:operation name="processRefund" qname="ns11:processRefund" returnQName="ns11:processRefundReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://PassengerRegistration" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:passengerId" type="xsd:int"/>
+   <ns1:parameter qname="ns11:choice" type="xsd:int"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="processRefund"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
