@@ -1,0 +1,32 @@
+Airline Reservation System
+
+USE CASES:
+
+1)Passenger Registration and Flight Booking:
+ The system prompts the passenger to provide personal information  including name,contact detailes,and passport information
+ Passenger select the desired flight,specifying departure and arrival location ,travel date and class of service
+ The system displays available flights ,schedules and pricing options for passenger's selection.
+ The person provides payment details to secure booking.
+ The system surely processes the payment,issue an e-ticket, and sends a booking confirmation to the passenger
+
+
+2)Boarding Pass Issuance And Airport Document Verification:
+ The system requests travel Document information and confirms the passenger's identity.
+ The System generates boarding passes for the selected flight and seats.
+ The System display boarding pass for verification.
+ Using the airline system,verify the passengers travel documents including passport and visa check.
+ 
+3)Refund a Ticket
+  *)Cancellation within 24 hours of Purchase:
+        If a customer requests a refund within 24 hours of purchasing a ticket, they are eligible for a full refund.
+		
+  *)Change in Travel Plans:
+        In cases where a customer needs to cancel due to a change in travel plans, A refund equivalent to 25% of the total amount will be given.
+		
+  *)Emergency Situation:
+        Refunds can be  considered for customers who provide evidence of emergency situations(e.g:medical situation,family crises).
+		A refund may be granted after verification.
+		
+  *)Flight Cancelation by the Airline:
+       If the airline cancels the flight for any reason customers are entitled to afill refund.
+	   Customer may also the given the option to reschedule or book an alternative flight.
