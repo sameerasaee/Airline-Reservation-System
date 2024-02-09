@@ -27,11 +27,11 @@
    <ns2:parameter qname="ns1:passportNumber" type="xsd:string"/>
   </ns2:operation>
   <ns1:parameter name="allowedMethods" value="verifyPassengerIdentity"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="BoardingPass"/>
-  <ns1:parameter name="className" value="main.BoardingPass"/>
-  <ns1:parameter name="wsdlServicePort" value="BoardingPass"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="BoardingPass"/>
+  <ns1:parameter name="className" value="main.BoardingPass"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="BoardingPassService"/>
  </ns1:service>
@@ -60,11 +60,11 @@
    <ns1:parameter qname="ns4:passengerID" type="xsd:int"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="booking fetchFlightDetails"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Fetchbookingdetails"/>
-  <ns1:parameter name="className" value="main.Fetchbookingdetails"/>
-  <ns1:parameter name="wsdlServicePort" value="Fetchbookingdetails"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://main"/>
+  <ns1:parameter name="wsdlServicePort" value="Fetchbookingdetails"/>
+  <ns1:parameter name="className" value="main.Fetchbookingdetails"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="FetchbookingdetailsService"/>
   <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:FlightDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:main.FlightDetails" xmlns:ns5="http://main"/>
@@ -91,11 +91,11 @@
    <ns1:parameter qname="ns7:passengerID" type="xsd:int"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="bookingDetails"/>
-  <ns1:parameter name="wsdlPortType" value="Boardingpassdetails"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://main"/>
-  <ns1:parameter name="wsdlServicePort" value="Boardingpassdetails"/>
+  <ns1:parameter name="wsdlPortType" value="Boardingpassdetails"/>
   <ns1:parameter name="className" value="main.Boardingpassdetails"/>
+  <ns1:parameter name="wsdlServicePort" value="Boardingpassdetails"/>
+  <ns1:parameter name="schemaQualified" value="http://main"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://main"/>
   <ns1:parameter name="wsdlServiceElement" value="BoardingpassdetailsService"/>
  </ns1:service>

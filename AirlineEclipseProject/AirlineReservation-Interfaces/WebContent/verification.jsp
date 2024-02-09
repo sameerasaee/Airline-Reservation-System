@@ -15,14 +15,14 @@
 <div class="container">
     <h2>Verify Passenger Identity</h2>
     
-    <form action="verifyIdentity.jsp" method="post">
+    <form action="verification.jsp" method="post">
         <label for="passportNumber">Enter Passport Number:</label>
         <input type="text" id="passportNumber" name="passportNumber" required>
         <br><br>
         
         <input type="submit" value="Verify">
     </form>
-
+   
     <% 
    
     if (request.getMethod().equalsIgnoreCase("post")) {
@@ -40,6 +40,8 @@
             out.println("<p>No passenger found with the provided Passport Number.</p>");
         }
     }
+   
+
     %>
 </div>
 </body>
