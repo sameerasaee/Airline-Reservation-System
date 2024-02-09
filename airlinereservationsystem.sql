@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2023 at 07:16 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Feb 09, 2024 at 06:55 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,26 +31,26 @@ CREATE TABLE `boardingpass` (
   `PassengerID` int(11) NOT NULL,
   `FlightID` int(11) NOT NULL,
   `SeatNumber` varchar(45) NOT NULL,
-  `BoardingDateTime` datetime NOT NULL,
-  `BoardingStatus` varchar(45) NOT NULL,
-  `GateNo` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `BoardingDateAndTime` datetime NOT NULL,
+  `Gate` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `boardingpass`
 --
 
-INSERT INTO `boardingpass` (`PassengerID`, `FlightID`, `SeatNumber`, `BoardingDateTime`, `BoardingStatus`, `GateNo`) VALUES
-(1, 1, 'A1', '2023-12-25 09:30:00', 'Issued', 'Gate 1'),
-(2, 2, 'B2', '2023-12-26 11:00:00', 'Issued', 'Gate 2'),
-(3, 3, 'C3', '2023-12-27 14:15:00', 'Used', 'Gate 3'),
-(4, 4, 'D4', '2023-12-28 07:45:00', 'Used', 'Gate 4'),
-(5, 5, 'E5', '2023-12-29 16:00:00', 'Issued', 'Gate 5'),
-(6, 6, 'F6', '2023-12-30 08:15:00', 'Used', 'Gate 6'),
-(7, 7, 'G7', '2024-01-02 13:30:00', 'Issued', 'Gate 7'),
-(8, 8, 'H8', '2024-01-03 10:50:00', 'Used', 'Gate 8'),
-(9, 9, 'I9', '2024-01-04 15:40:00', 'Issued', 'Gate 9'),
-(10, 10, 'J10', '2024-01-05 17:15:00', 'Issued', 'Gate 10');
+INSERT INTO `boardingpass` (`PassengerID`, `FlightID`, `SeatNumber`, `BoardingDateAndTime`, `Gate`) VALUES
+(1, 1, 'A1', '2023-12-25 09:30:00', 'Gate 1'),
+(2, 2, 'B2', '2023-12-26 11:00:00', 'Gate 2'),
+(3, 3, 'C3', '2023-12-27 14:15:00', 'Gate 3'),
+(4, 4, 'D4', '2023-12-28 07:45:00', 'Gate 4'),
+(5, 5, 'E5', '2023-12-29 16:00:00', 'Gate 5'),
+(6, 6, 'F6', '2023-12-30 08:15:00', 'Gate 6'),
+(7, 7, 'G7', '2024-01-02 13:30:00', 'Gate 7'),
+(8, 8, 'H8', '2024-01-03 10:50:00', 'Gate 8'),
+(9, 9, 'I9', '2024-01-04 15:40:00', 'Gate 9'),
+(10, 10, 'J10', '2024-01-05 17:15:00', 'Gate 10'),
+(11, 11, 'R9', '2024-02-09 15:41:18', 'G9');
 
 -- --------------------------------------------------------
 
@@ -64,24 +64,25 @@ CREATE TABLE `booking` (
   `FlightID` int(11) NOT NULL,
   `BookingDate` datetime NOT NULL,
   `PaymentDetails` varchar(45) NOT NULL,
-  `BookingStatus` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Status` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`BookingID`, `PassengerID`, `FlightID`, `BookingDate`, `PaymentDetails`, `BookingStatus`) VALUES
-(101, 1, 1, '2023-12-15 08:00:00', 'Credit Card', 'Confirmed'),
-(102, 2, 2, '2023-12-16 10:30:00', 'Debit Card', 'Pending'),
-(103, 3, 3, '2023-12-17 12:45:00', 'Credit Card', 'Cancelled'),
-(104, 4, 4, '2023-12-18 14:15:00', 'Debit Card', 'Confirmed'),
-(105, 5, 5, '2023-12-19 16:30:00', 'Credit Card', 'Pending'),
-(106, 6, 6, '2023-12-20 18:45:00', 'Debit Card', 'Confirmed'),
-(107, 7, 7, '2023-12-21 20:00:00', 'Credit Card', 'Cancelled'),
-(108, 8, 8, '2023-12-22 22:15:00', 'Debit Card', 'Confirmed'),
-(109, 9, 9, '2023-12-23 09:30:00', 'Debit Card', 'Pending'),
-(110, 10, 10, '2023-12-24 11:45:00', 'Credit Card', 'Confirmed');
+INSERT INTO `booking` (`BookingID`, `PassengerID`, `FlightID`, `BookingDate`, `PaymentDetails`, `Status`) VALUES
+(1, 1, 1, '2023-12-15 08:00:00', 'Credit Card', 'Confirmed'),
+(2, 2, 2, '2023-12-16 10:30:00', 'Debit Card ', 'Pending'),
+(3, 3, 3, '2023-12-17 12:45:00', 'Credit Card', 'Cancelled'),
+(4, 4, 4, '2023-12-18 14:15:00', 'Debit Card ', 'Confirmed'),
+(5, 5, 5, '2023-12-19 16:30:00', 'Credit Card', 'Pending'),
+(6, 6, 6, '2023-12-20 18:45:00', 'Debit Card ', 'Confirmed'),
+(7, 7, 7, '2023-12-21 20:00:00', 'Credit Card', 'Cancelled'),
+(8, 8, 8, '2023-12-22 22:15:00', 'Debit Card ', 'Confirmed'),
+(9, 9, 9, '2023-12-23 09:30:00', 'Debit Card ', 'Pending'),
+(10, 10, 10, '2023-12-24 11:45:00', 'Credit Card ', 'Confirmed'),
+(11, 11, 11, '2024-02-09 15:45:32', 'Credit', 'Confirmd');
 
 -- --------------------------------------------------------
 
@@ -91,14 +92,14 @@ INSERT INTO `booking` (`BookingID`, `PassengerID`, `FlightID`, `BookingDate`, `P
 
 CREATE TABLE `documentverfication` (
   `PassengerID` int(11) NOT NULL,
-  `DocumentStatus` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `VerificationStatus` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `documentverfication`
 --
 
-INSERT INTO `documentverfication` (`PassengerID`, `DocumentStatus`) VALUES
+INSERT INTO `documentverfication` (`PassengerID`, `VerificationStatus`) VALUES
 (1, 'Verified'),
 (2, 'Pending'),
 (3, 'Verified'),
@@ -123,23 +124,25 @@ CREATE TABLE `flights` (
   `DepartureDate` datetime NOT NULL,
   `ClassOfService` varchar(45) NOT NULL,
   `Price` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `flights`
 --
 
 INSERT INTO `flights` (`FlightID`, `DepartureLocation`, `ArrivalLocation`, `DepartureDate`, `ClassOfService`, `Price`) VALUES
-(1, 'Karachi', 'Dubai', '2023-12-27 12:30:00', 'Business', 100000),
-(2, 'Islamabad', 'Istanbul', '2023-12-30 10:00:00', 'Economy', 95000),
-(3, 'Lahore', 'Doha', '2023-12-30 15:30:00', 'First Class', 125000),
-(4, 'Islamabad', 'Colombo', '2024-01-03 08:15:00', 'Economy', 65000),
-(5, 'Karachi', 'Bangkok', '2023-12-29 11:30:00', 'Business', 78000),
-(6, 'Islamabad', 'Tokyo', '2023-12-31 17:00:00', 'First Class', 92000),
-(7, 'Karachi', 'Kuala Lumpur', '2024-01-01 09:15:00', 'Business', 85000),
-(8, 'Lahore', 'Paris', '2024-01-02 12:30:00', 'Economy', 91000),
-(9, 'Islamabad', 'London', '2024-01-03 15:45:00', 'First Class', 84000),
-(10, 'Quetta', 'Dublin', '2024-01-06 14:30:00', 'First Class', 62000);
+(1, 'Islamabad, Pakistan', 'Dubai, United Arab Emirates', '2023-12-25 10:00:00', 'Business', 150000),
+(2, 'Karachi, Pakistan', 'Istanbul, Turkey', '2023-12-26 12:30:00', 'Economy', 80000),
+(3, 'Lahore, Pakistan', 'Doha, Qatar', '2023-12-27 15:45:00', 'First Class', 200000),
+(4, 'Islamabad, Pakistan', 'Colombo, Sri Lanka', '2023-12-28 08:15:00', 'Economy', 70000),
+(5, 'Karachi, Pakistan', 'Bangkok, Thailand', '2023-12-29 11:30:00', 'Business', 180000),
+(6, 'Lahore, Pakistan', 'Singapore', '2023-12-30 14:45:00', 'Economy', 90000),
+(7, 'Islamabad, Pakistan', 'Tokyo, Japan', '2023-12-31 17:00:00', 'First Class', 220000),
+(8, 'Karachi, Pakistan', 'Kuala Lumpur, Malaysia', '2024-01-01 09:15:00', 'Business', 160000),
+(9, 'Lahore, Pakistan', 'Paris, France', '2024-01-02 12:30:00', 'Economy', 110000),
+(10, 'Islamabad, Pakistan', 'London, UK', '2024-01-03 15:45:00', 'First Class', 240000),
+(11, 'Lahore,Pakistan', 'Turkey', '2024-02-09 15:36:21', 'Economy ', 25000),
+(12, 'Rawalpindi,Pakistan', 'Germany', '2024-02-09 15:38:48', 'Business ', 30000);
 
 -- --------------------------------------------------------
 
@@ -152,23 +155,25 @@ CREATE TABLE `passengers` (
   `PassengerName` varchar(45) NOT NULL,
   `ContactNumber` bigint(20) NOT NULL,
   `PassportNumber` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `passengers`
 --
 
 INSERT INTO `passengers` (`PassengerID`, `PassengerName`, `ContactNumber`, `PassportNumber`) VALUES
-(1, 'Faraz Ahmed', 3452184403, 'AB123456'),
-(2, 'Faiza Muneeb', 3458721693, 'CD789012'),
-(3, 'Munawar Faizan', 3452196741, 'EF345678'),
-(4, 'Iqbal Ahmed', 3258974136, 'GH901234'),
-(5, 'Laraib Shakeel', 3215964785, 'IJ567890'),
-(6, 'Areej Fatima', 3245896120, 'KL123456'),
-(7, 'Saeed Ahmed', 3254821039, 'MN789012'),
-(8, 'Ashfaq Khan', 3265987410, 'OP345678'),
-(9, 'Raza Khan', 3254198760, 'QR901234'),
-(10, 'Lubaba Musab', 3257841036, 'ST567890');
+(1, 'Alishba Iqbal', 3215964785, 'AB123456'),
+(2, 'Sameera Saeed', 3245896120, 'CD789012'),
+(3, 'Zoella Malik', 3254821039, 'EF345678'),
+(4, 'Abdullah Khan', 3257841036, 'GH901234'),
+(5, 'Raza Ahmed', 3265987410, 'IJ567890'),
+(6, 'Ashfaq Khan', 3257841031, 'KL123456'),
+(7, 'Musab Siddiqui', 3258741236, 'MN789012'),
+(8, 'Laraib Shakeel', 3245987631, 'OP345678'),
+(9, 'Abdul Ahad', 3321478520, 'QR901234'),
+(10, 'Hamza Raza', 3265987413, 'ST567890'),
+(11, 'roi', 324567821, 'RI87965'),
+(12, 'Eddie', 98566, 'EW2345');
 
 -- --------------------------------------------------------
 
@@ -180,25 +185,25 @@ CREATE TABLE `refundticket` (
   `RefundID` int(11) NOT NULL,
   `BookingID` int(11) NOT NULL,
   `RefundReason` varchar(45) NOT NULL,
-  `RefundAmount` bigint(20) NOT NULL,
-  `RefundStatus` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `RefundStatus` varchar(45) NOT NULL,
+  `RefundAmount` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `refundticket`
 --
 
-INSERT INTO `refundticket` (`RefundID`, `BookingID`, `RefundReason`, `RefundAmount`, `RefundStatus`) VALUES
-(201, 101, 'Change in travel plans', 25000, 'Approved'),
-(202, 102, 'Cancellation within 24 hours', 95000, 'Approved'),
-(203, 103, 'Customer request', 0, 'Denied'),
-(204, 104, 'Change in travel plans', 16250, 'Approved'),
-(205, 105, 'Change in travel plans', 19500, 'Pending'),
-(206, 106, 'Customer request', 0, 'Denied'),
-(207, 107, 'Emergency situation', 42500, 'Approved'),
-(208, 108, 'Change in travel plans', 22750, 'Approved'),
-(209, 109, 'Customer request', 0, 'Denied'),
-(210, 110, 'Change in travel plans', 15500, 'Approved');
+INSERT INTO `refundticket` (`RefundID`, `BookingID`, `RefundReason`, `RefundStatus`, `RefundAmount`) VALUES
+(1, 1, 'Change in travel plans', 'Approved', 37500),
+(2, 2, 'Cancellation within 24 hours', 'Approved', 80000),
+(3, 3, 'Customer request', 'Denied', 0),
+(4, 4, 'Change in travel plans', 'Approved', 17500),
+(5, 5, 'Change in travel plans', 'Pending', 45000),
+(6, 6, 'Customer request', 'Denied', 0),
+(7, 7, 'Emergency situation', 'Approved', 110000),
+(8, 8, 'Change in travel plans', 'Approved', 40000),
+(9, 9, 'Customer request', 'Denied', 0),
+(10, 10, 'Change in travel plans', 'Approved', 60000);
 
 --
 -- Indexes for dumped tables
@@ -208,9 +213,8 @@ INSERT INTO `refundticket` (`RefundID`, `BookingID`, `RefundReason`, `RefundAmou
 -- Indexes for table `boardingpass`
 --
 ALTER TABLE `boardingpass`
-  ADD PRIMARY KEY (`SeatNumber`),
-  ADD KEY `FlightID` (`FlightID`),
-  ADD KEY `PassengerID` (`PassengerID`);
+  ADD KEY `PassengerID` (`PassengerID`),
+  ADD KEY `FlightID` (`FlightID`);
 
 --
 -- Indexes for table `booking`
@@ -253,25 +257,25 @@ ALTER TABLE `refundticket`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `BookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `BookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `flights`
 --
 ALTER TABLE `flights`
-  MODIFY `FlightID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `FlightID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `passengers`
 --
 ALTER TABLE `passengers`
-  MODIFY `PassengerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `PassengerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `refundticket`
 --
 ALTER TABLE `refundticket`
-  MODIFY `RefundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `RefundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -281,8 +285,8 @@ ALTER TABLE `refundticket`
 -- Constraints for table `boardingpass`
 --
 ALTER TABLE `boardingpass`
-  ADD CONSTRAINT `boardingpass_ibfk_1` FOREIGN KEY (`FlightID`) REFERENCES `flights` (`FlightID`),
-  ADD CONSTRAINT `boardingpass_ibfk_2` FOREIGN KEY (`PassengerID`) REFERENCES `passengers` (`PassengerID`);
+  ADD CONSTRAINT `boardingpass_ibfk_1` FOREIGN KEY (`PassengerID`) REFERENCES `passengers` (`PassengerID`),
+  ADD CONSTRAINT `boardingpass_ibfk_2` FOREIGN KEY (`FlightID`) REFERENCES `flights` (`FlightID`);
 
 --
 -- Constraints for table `booking`
